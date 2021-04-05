@@ -29,9 +29,9 @@ class Dashboard extends Component {
 
     componentDidMount() {
         const { getCurrencyRecordAction, getAllRecordAction } = this.props;
+        getCurrencyRecordAction();
         const { selectedCurrency } = this.state;
         getAllRecordAction(selectedCurrency)
-        getCurrencyRecordAction();
     }
 
     handleChange = (event) => {
@@ -51,7 +51,7 @@ class Dashboard extends Component {
         const valueList = getAllRecordList.bpi != null ? Object.values(getAllRecordList.bpi) : [];
 
         return (
-            <Card style={{ borderColor: 'green', margin:'10px' }}>
+            <Card style={{ borderColor: 'green', margin: '10px' }}>
                 <Row>
                     <Col sm={4}>
                         <Form style={{ marginTop: '100px', marginLeft: '50px' }}>
@@ -68,8 +68,8 @@ class Dashboard extends Component {
                                 </Form.Control>
                             </Form.Group>
                             <p style={{ fontSize: 40 }}>
-                                <b><span>{currenyDetails.rate}</span>{' '}
-                                    <span>{currenyDetails.description}</span></b>
+                                <b><span>{currenyDetails && currenyDetails.rate}</span>{' '}
+                                    <span>{currenyDetails && currenyDetails.description}</span></b>
                             </p>
                         </Form>
                     </Col>
