@@ -44,9 +44,9 @@ class Dashboard extends Component {
     render() {
         const { getCurrencyList, getAllRecordList } = this.props;
         const { selectedCurrency } = this.state;
-        const CurrencyList = getCurrencyList.bpi != null ? Object.values(getCurrencyList.bpi) : [];
+        const currencyList = getCurrencyList.bpi != null ? Object.values(getCurrencyList.bpi) : [];
         const key = selectedCurrency === "USD" ? 0 : selectedCurrency === "GBP" ? 1 : 2;
-        const currenyDetails = CurrencyList[key];
+        const currenyDetails = currencyList[key];
         const dateList = getAllRecordList.bpi != null ? Object.keys(getAllRecordList.bpi) : [];
         const valueList = getAllRecordList.bpi != null ? Object.values(getAllRecordList.bpi) : [];
 
@@ -59,7 +59,7 @@ class Dashboard extends Component {
                                 <Form.Label>1 BitCoin Equals</Form.Label>
                                 <Form.Control as="select" onChange={this.handleChange}>
                                     {
-                                        CurrencyList && CurrencyList.map((currency) => {
+                                        currencyList && currencyList.map((currency) => {
                                             return (
                                                 <option key={currency.code} value={currency.code} >{currency.description}</option>
                                             )
